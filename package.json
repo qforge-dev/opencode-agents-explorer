@@ -1,6 +1,6 @@
 {
   "name": "@qforge/opencode-agents-explorer",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "OpenCode plugin that automatically injects AGENTS.md files from sub folders when an agent reads files",
   "type": "module",
   "main": "dist/index.js",
