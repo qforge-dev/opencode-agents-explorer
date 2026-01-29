@@ -194,3 +194,5 @@ export const AgentsMdInjectorPlugin: Plugin = async function (context) {
 
   return hooks
 }
+
+export default AgentsMdInjectorPlugin
