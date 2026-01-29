@@ -1,11 +1,18 @@
 {
   "name": "@qforge/opencode-agents-explorer",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "OpenCode plugin that automatically injects AGENTS.md files from sub folders when an agent reads files",
-  "type": "module",
   "private": false,
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "bun build src/index.ts --outdir dist --format esm --target node --dts",
+    "prepublishOnly": "bun run build",
+    "release": "npm version patch && npm publish && git push --follow-tags",
+    "test": "bun test"
+  },
   "exports": {
     ".": {
       "import": "./dist/index.js",
@@ -13,29 +20,17 @@
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
-  "scripts": {
-    "test": "bun test",
-    "build": "bun build src/index.ts --outdir=dist --target=bun && bun run build:types",
-    "build:types": "tsc --declaration --emitDeclarationOnly --outDir dist",
-    "prepublishOnly": "bun run build",
-    "release": "npm version patch && npm publish --access public"
-  },
-  "keywords": [
-    "opencode",
-    "plugin",
-    "agents",
-    "context-injection"
-  ],
-  "author": "",
-  "license": "MIT",
-  "peerDependencies": {
-    "@opencode-ai/plugin": ">=1.0.0"
+  "publishConfig": {
+    "access": "public"
   },
   "devDependencies": {
-    "@opencode-ai/plugin": "^1.1.42",
     "@types/bun": "latest",
-    "typescript": "^5.0.0"
+    "@opencode-ai/plugin": "^1.1.42"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
   }
 }
