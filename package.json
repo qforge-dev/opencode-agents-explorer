@@ -1,0 +1,40 @@
+{
+  "name": "@qforge/opencode-agents-explorer",
+  "version": "0.1.0",
+  "description": "OpenCode plugin that automatically injects AGENTS.md files from sub folders when an agent reads files",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "bun test",
+    "build": "bun build src/index.ts --outdir=dist --target=bun && bun run build:types",
+    "build:types": "tsc --declaration --emitDeclarationOnly --outDir dist",
+    "prepublishOnly": "bun run build",
+    "release": "npm version patch && npm publish"
+  },
+  "keywords": [
+    "opencode",
+    "plugin",
+    "agents",
+    "context-injection"
+  ],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "@opencode-ai/plugin": ">=1.0.0"
+  },
+  "devDependencies": {
+    "@opencode-ai/plugin": "^1.1.42",
+    "@types/bun": "latest",
+    "typescript": "^5.0.0"
+  }
+}
